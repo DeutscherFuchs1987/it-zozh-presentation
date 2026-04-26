@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IT-ЗОЖ | Защита проекта</title>
+    
+    <!-- reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+    
+    <!-- Кастомные стили -->
+    <link rel="stylesheet" href="css/presentation-theme.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        /* Дополнительные стили */
+        .grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .grid-3x2 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .task-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            transition: all 0.25s ease;
+        }
+        .task-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+        }
+        .task-icon {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .screenshot-placeholder {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .screenshot-placeholder i {
+            font-size: 3rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .qr-center {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .qr-item {
+            text-align: center;
+        }
+        .qr-placeholder {
+            width: 120px;
+            height: 120px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+        .result-list {
+            list-style: none;
+            padding: 0;
+        }
+        .result-list li {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            margin: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .perspectives-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .perspective-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: center;
+            min-width: 180px;
+        }
+        .perspective-card .it-card-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        
+        <!-- ========================================================= -->
+        <!-- 1. ТИТУЛЬНЫЙ СЛАЙД (только заголовок + QR-коды)           -->
+        <!-- ========================================================= -->
+        <section>
+            <h1 class="gradient-text" style="font-size: 3.5rem; margin-bottom: 1rem;">IT-ЗОЖ</h1>
+            <h3 style="color: var(--accent-cyan); margin-bottom: 2rem;">Инженер здоровых привычек</h3>
+            
+            <div class="qr-center">
+                <div class="qr-item">
+                    <div class="qr-placeholder">
+                        <i class="bi bi-qr-code" style="font-size: 2.5rem; color: var(--text-secondary);"></i>
+                    </div>
+                    <p class="text-secondary" style="font-size: 0.8rem;">Презентация</p>
+                </div>
+                <div class="qr-item">
+                    <div class="qr-placeholder">
+                        <i class="bi bi-qr-code" style="font-size: 2.5rem; color: var(--text-secondary);"></i>
+                    </div>
+                    <p class="text-secondary" style="font-size: 0.8rem;">Сайт IT-ЗОЖ</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Актуальность</h2>
+            <div class="grid-2x2">
+                <div class="it-card fragment fade-up" data-fragment-index="1">
+                    <div class="it-card-icon"><i class="bi bi-eye"></i></div>
+                    <div class="stat-number">80%</div>
+                    <div class="it-card-title">Усталость глаз</div>
+                    <div class="it-card-text">Компьютерный зрительный синдром</div>
+                </div>
+                <div class="it-card fragment fade-up" data-fragment-index="2">
+                    <div class="it-card-icon"><i class="bi bi-back"></i></div>
+                    <div class="stat-number">75%</div>
+                    <div class="it-card-title">Боли в спине</div>
+                    <div class="it-card-text">Остеохондроз, кифоз</div>
+                </div>
+                <div class="it-card fragment fade-up" data-fragment-index="3">
+                    <div class="it-card-icon"><i class="bi bi-hand-index"></i></div>
+                    <div class="stat-number">35%</div>
+                    <div class="it-card-title">Туннельный синдром</div>
+                    <div class="it-card-text">Боль в запястьях</div>
+                </div>
+                <div class="it-card fragment fade-up" data-fragment-index="4">
+                    <div class="it-card-icon"><i class="bi bi-tsunami"></i></div>
+                    <div class="stat-number">64%</div>
+                    <div class="it-card-title">Выгорание</div>
+                    <div class="it-card-text">Хронический стресс</div>
+                </div>
+            </div>
+            <div class="fragment fade-up" data-fragment-index="5">
+                <div class="it-card" style="background: rgba(239,68,68,0.1); border-color: var(--accent-red); text-align: center; margin-top: 20px;">
+                    <div class="stat-number" style="color: var(--accent-red);">90%</div>
+                    <div class="it-card-text"><strong>НЕ используют приложения-напоминалки</strong></div>
+                    <p class="text-secondary">опрос среди обучающихся 21 ИСР</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <section>
+                <h2>Цель проекта</h2>
+                <div class="it-card" style="margin-top: 40px; border-left: 4px solid var(--accent-cyan); text-align: center;">
+                    <p class="it-card-text" style="font-size: 1.2rem;">Разработка веб-приложения «IT-ЗОЖ» для формирования устойчивой мотивации к здоровому образу жизни у программистов</p>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Задачи проекта</h2>
+                <div class="grid-2x2">
+                    <div class="task-card fragment fade-up">
+                        <div class="task-icon"><i class="bi bi-journal-bookmark-fill" style="color: var(--accent-cyan);"></i></div>
+                        <div class="it-card-title">Теоретический анализ</div>
+                        <div class="it-card-text">Изучение профессиограммы, ЗОЖ и факторов риска</div>
+                    </div>
+                    <div class="task-card fragment fade-up" data-fragment-index="1">
+                        <div class="task-icon"><i class="bi bi-bar-chart-steps" style="color: var(--accent-cyan);"></i></div>
+                        <div class="it-card-title">Опрос аудитории</div>
+                        <div class="it-card-text">Анализ потребностей обучающихся 21 ИСР</div>
+                    </div>
+                    <div class="task-card fragment fade-up" data-fragment-index="2">
+                        <div class="task-icon"><i class="bi bi-binoculars" style="color: var(--accent-cyan);"></i></div>
+                        <div class="it-card-title">Анализ аналогов</div>
+                        <div class="it-card-text">Stretchly, EyeLeo, Workrave, Habitica</div>
+                    </div>
+                    <div class="task-card fragment fade-up" data-fragment-index="3">
+                        <div class="task-icon"><i class="bi bi-code-square" style="color: var(--accent-cyan);"></i></div>
+                        <div class="it-card-title">Разработка приложения</div>
+                        <div class="it-card-text">6 функциональных модулей + мотивационные механики</div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Анализ аналогов</h2>
+                <p class="text-secondary">Существующие решения полезны, но не дают комплексного подхода</p>
+            </section>
+            
+            <section>
+                <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+                    <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <img src="image/stretchly.png" alt="stretchly">
+                    </div>
+                    <h3>Stretchly</h3>
+                </div>
+                <div class="grid-2x2">
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-check-lg" style="color: var(--accent-green);"></i></div><div class="it-card-title text-green">Плюсы</div><div class="it-card-text">Бесплатно, гибкие настройки</div></div>
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-x-lg" style="color: var(--accent-red);"></i></div><div class="it-card-title text-orange">Минусы</div><div class="it-card-text">Нет упражнений</div></div>
+                </div>
+            </section>
+            
+            <section>
+                <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+                    <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <img src="image/eyeleo.png" alt="EyeLeo">
+                    </div>
+                    <h3>EyeLeo</h3>
+                </div>
+                <div class="grid-2x2">
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-check-lg" style="color: var(--accent-green);"></i></div><div class="it-card-title text-green">Плюсы</div><div class="it-card-text">Упражнения для глаз, блокировка экрана</div></div>
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-x-lg" style="color: var(--accent-red);"></i></div><div class="it-card-title text-orange">Минусы</div><div class="it-card-text">Только глаза, старый интерфейс</div></div>
+                </div>
+            </section>
+            
+            <section>
+                <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+                    <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <img src="image/workrave.png" alt="Workrave">
+                    </div>
+                    <h3>Workrave</h3>
+                </div>
+                <div class="grid-2x2">
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-check-lg" style="color: var(--accent-green);"></i></div><div class="it-card-title text-green">Плюсы</div><div class="it-card-text">Статистика, строгий режим</div></div>
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-x-lg" style="color: var(--accent-red);"></i></div><div class="it-card-title text-orange">Минусы</div><div class="it-card-text">Сложная настройка</div></div>
+                </div>
+            </section>
+            
+            <section>
+                <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px;">
+                    <div style="width: 50px; height: 50px; background: rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <img src="image/habitica.png" alt="Habitica">
+                    </div>
+                    <h3>Habitica</h3>
+                </div>
+                <div class="grid-2x2">
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-check-lg" style="color: var(--accent-green);"></i></div><div class="it-card-title text-green">Плюсы</div><div class="it-card-text">Геймификация, социализация</div></div>
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-x-lg" style="color: var(--accent-red);"></i></div><div class="it-card-title text-orange">Минусы</div><div class="it-card-text">Нет привязки к ПК</div></div>
+                </div>
+            </section>
+            
+            <section>
+                <div class="it-card" style="text-align: center; background: rgba(6,182,212,0.1); border-color: var(--accent-cyan);">
+                    <div class="it-card-title">Общий вывод</div>
+                    <div class="it-card-text">Ни одно приложение не даёт комплексного подхода: <span class="text-cyan">Активность + Режим дня + Питание + Профилактика</span></div>
+                </div>
+            </section>
+        </section>
+
+
+        <section>
+            <section>
+                <h2>Опрос целевой аудитории</h2>
+                <p class="text-secondary">Обучающиеся 21 ИСР, N=20</p>
+            </section>
+            
+            <section>
+                <h3>Сколько часов вы проводите за ПК?</h3>
+                <div class="screenshot-placeholder">
+                    <i class="bi bi-pie-chart"></i>
+                    <p class="text-secondary">Скриншот диаграммы<br>80% — более 6 часов</p>
+                </div>
+            </section>
+            
+            <section>
+                <h3>Какие боли вас беспокоят?</h3>
+                <div class="screenshot-placeholder">
+                    <i class="bi bi-bar-chart"></i>
+                    <p class="text-secondary">Скриншот диаграммы<br>75% — боли в спине, 80% — усталость глаз</p>
+                </div>
+            </section>
+            
+            <section>
+                <h3>Используете ли вы приложения-напоминалки?</h3>
+                <div class="screenshot-placeholder">
+                    <i class="bi bi-donut"></i>
+                    <p class="text-secondary">Скриншот диаграммы<br>90% — не используют</p>
+                </div>
+            </section>
+        </section>
+
+
+        <section>
+            <h2>Технологический стек</h2>
+            <div class="grid-3x2">
+                <div class="it-card">
+                    <div class="it-card-icon"><i class="bi bi-filetype-html"></i></div>
+                    <div class="it-card-title">HTML5</div>
+                    <div class="it-card-text">Семантическая разметка</div>
+                </div>
+                <div class="it-card">
+                    <div class="it-card-icon"><i class="bi bi-filetype-css"></i></div>
+                    <div class="it-card-title">CSS3</div>
+                    <div class="it-card-text">Тёмная тема</div>
+                </div>
+                <div class="it-card">
+                    <div class="it-card-icon"><i class="bi bi-filetype-js"></i></div>
+                    <div class="it-card-title">JavaScript</div>
+                    <div class="it-card-text">Вся логика</div>
+                </div>
+                <div class="it-card">
+                    <div class="it-card-icon"><i class="bi bi-bootstrap-fill"></i></div>
+                    <div class="it-card-title">Bootstrap 5</div>
+                    <div class="it-card-text">Адаптивная сетка</div>
+                </div>
+                <div class="it-card">
+                    <div class="it-card-icon"><i class="bi bi-database"></i></div>
+                    <div class="it-card-title">localStorage</div>
+                    <div class="it-card-text">Сохранение данных</div>
+                </div>
+                <div class="it-card">
+                    <div class="it-card-icon"><i class="bi bi-code-slash"></i></div>
+                    <div class="it-card-title">reveal.js</div>
+                    <div class="it-card-text">Платформа презентации</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <section>
+                <h2>6 функциональных модулей</h2>
+                <div class="grid-3x2">
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-house-door"></i></div><div class="it-card-title">Главная</div></div>
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-activity"></i></div><div class="it-card-title">Разминка</div></div>
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-bicycle"></i></div><div class="it-card-title">Активность</div></div>
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-moon-stars"></i></div><div class="it-card-title">Режим и сон</div></div>
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-apple"></i></div><div class="it-card-title">Питание</div></div>
+                    <div class="it-card"><div class="it-card-icon"><i class="bi bi-shield-check"></i></div><div class="it-card-title">Профилактика</div></div>
+                </div>
+            </section>
+            
+            <section>
+                <div class="it-card-icon" style="font-size: 3rem;"><i class="bi bi-activity" style="color: var(--accent-cyan);"></i></div>
+                <h3>Разминка</h3>
+                <div class="it-card-text">6 упражнений, таймер, фильтрация по категориям, режим полной разминки</div>
+            </section>
+            
+            <section>
+                <div class="it-card-icon" style="font-size: 3rem;"><i class="bi bi-bicycle" style="color: var(--accent-cyan);"></i></div>
+                <h3>Активность</h3>
+                <div class="it-card-text">Расчёт калорий по формуле MET, трекинг недельной активности к норме ВОЗ</div>
+            </section>
+            
+            <section>
+                <div class="it-card-icon" style="font-size: 3rem;"><i class="bi bi-moon-stars" style="color: var(--accent-cyan);"></i></div>
+                <h3>Режим и сон</h3>
+                <div class="it-card-text">Таймер Pomodoro (25/5), чек-лист дня на 13 пунктов</div>
+            </section>
+            
+            <section>
+                <div class="it-card-icon" style="font-size: 3rem;"><i class="bi bi-apple" style="color: var(--accent-cyan);"></i></div>
+                <h3>Питание</h3>
+                <div class="it-card-text">Трекер воды (расчёт нормы по весу), планировщик питания с подсчётом калорий</div>
+            </section>
+            
+            <section>
+                <div class="it-card-icon" style="font-size: 3rem;"><i class="bi bi-shield-check" style="color: var(--accent-cyan);"></i></div>
+                <h3>Профилактика</h3>
+                <div class="it-card-text">Чек-лист привычек, стрики, календарь прогресса на 30 дней</div>
+            </section>
+        </section>
+
+        <section>
+            <h2>Мотивационные механики</h2>
+            <div class="grid-2x2">
+                <div class="it-card">
+                    <div class="it-card-icon"><i class="bi bi-graph-up"></i></div>
+                    <div class="it-card-title">Визуализация прогресса</div>
+                    <div class="it-card-text">Проценты, прогресс-бары</div>
+                </div>
+                <div class="it-card">
+                    <div class="it-card-icon"><i class="bi bi-save"></i></div>
+                    <div class="it-card-title">Сохранение данных</div>
+                    <div class="it-card-text">localStorage, прогресс не теряется</div>
+                </div>
+                <div class="it-card">
+                    <div class="it-card-icon"><i class="bi bi-fire"></i></div>
+                    <div class="it-card-title">Система стриков</div>
+                    <div class="it-card-text">Эффект «не разрывать цепочку»</div>
+                </div>
+                <div class="it-card">
+                    <div class="it-card-icon"><i class="bi bi-person-gear"></i></div>
+                    <div class="it-card-title">Персонализация</div>
+                    <div class="it-card-text">Норма воды по весу, выбор блюд</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- 9. РЕЗУЛЬТАТЫ ПРОЕКТА (список + карточки перспектив)     -->
+        <!-- ========================================================= -->
+        <section>
+            <section>
+                <h2>Результаты проекта</h2>
+                <ul class="result-list">
+                    <li><i class="bi bi-check-circle-fill" style="color: var(--accent-green); font-size: 1.5rem;"></i> Разработано клиентское веб-приложение «IT-ЗОЖ»</li>
+                    <li><i class="bi bi-check-circle-fill" style="color: var(--accent-green); font-size: 1.5rem;"></i> Реализованы 6 функциональных модулей</li>
+                    <li><i class="bi bi-check-circle-fill" style="color: var(--accent-green); font-size: 1.5rem;"></i> Внедрены мотивационные механики</li>
+                    <li><i class="bi bi-check-circle-fill" style="color: var(--accent-green); font-size: 1.5rem;"></i> Проведено тестирование — ошибок не выявлено</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>Перспективы развития</h2>
+                <div class="perspectives-grid">
+                    <div class="perspective-card">
+                        <div class="it-card-icon"><i class="bi bi-server"></i></div>
+                        <div class="it-card-title">Серверная часть</div>
+                        <div class="it-card-text">Авторизация, синхронизация</div>
+                    </div>
+                    <div class="perspective-card">
+                        <div class="it-card-icon"><i class="bi bi-phone"></i></div>
+                        <div class="it-card-title">Мобильная версия</div>
+                        <div class="it-card-text">PWA, офлайн-режим</div>
+                    </div>
+                    <div class="perspective-card">
+                        <div class="it-card-icon"><i class="bi bi-people"></i></div>
+                        <div class="it-card-title">Командные челленджи</div>
+                        <div class="it-card-text">Рейтинги, соревнования</div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- 10. СПАСИБО ЗА ВНИМАНИЕ (QR по центру)                   -->
+        <!-- ========================================================= -->
+        <section>
+            <h1 class="gradient-text" style="font-size: 3rem;">Спасибо за внимание!</h1>
+            <div class="qr-center">
+                <div class="qr-item">
+                    <div class="qr-placeholder">
+                        <i class="bi bi-qr-code" style="font-size: 2.5rem; color: var(--text-secondary);"></i>
+                    </div>
+                    <p class="text-secondary">Презентация онлайн</p>
+                </div>
+                <div class="qr-item">
+                    <div class="qr-placeholder">
+                        <i class="bi bi-qr-code" style="font-size: 2.5rem; color: var(--text-secondary);"></i>
+                    </div>
+                    <p class="text-secondary">Сайт IT-ЗОЖ</p>
+                </div>
+            </div>
+            <div class="fragment" style="margin-top: 40px;">
+                <span class="it-badge it-badge-purple" style="font-size: 1rem;">Готов ответить на вопросы</span>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+
+<script>
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'slide',
+        plugins: [ RevealNotes ]
+    });
+</script>
+</body>
+</html>
